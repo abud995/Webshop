@@ -1,0 +1,36 @@
+<div class="animated fadeIn" ng-if="lv.zaIzmenu.naziv">
+    <h1>Izmena artikla</h1>
+    <form name="izmenaArtikla" ng-submit="izmenaArtikla.$valid && lv.izmeniArtikal()">
+        <div class="form-group">
+            <label for="naziv">Naziv</label>
+            <input type="text" class="form-control" ng-class="{'is-invalid': izmenaArtikla.naziv.$invalid}" name="naziv"
+                aria-describedby="naziv" placeholder="Naziv" ng-model="lv.zaIzmenu.naziv" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="kategorija">Kategorija</label>
+            <select class="form-control border " name="kategorija" ng-class="{'is-invalid': izmenaArtikla.kategorija.$invalid}" ng-options="kategorija.nazivKategorije for kategorija in lv.kategorije track by kategorija.id" ng-model="lv.zaIzmenu.kategorija" ng-required="true">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cena">Cena</label>
+            <input type="number" min="1" step="0.01" class="form-control" ng-class="{'is-invalid': izmenaArtikla.cena.$invalid}" name="cena" aria-describedby="cena" placeholder="Cena" ng-model="lv.zaIzmenu.cena" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="kolicina">Količina</label>
+            <input type="number" min="1" class="form-control" ng-class="{'is-invalid': izmenaArtikla.kolicina.$invalid}" name="kolicina" aria-describedby="kolicina" placeholder="Količina" ng-model="lv.zaIzmenu.kolicina" ng-required="true">
+        </div>
+		<div class="form-group">
+            <label for="stanje">Stanje</label>
+            <select class="form-control border" name="stanje" ng-class="{'is-invalid': izmenaArtikla.stanje.$invalid}" ng-options="stanje for stanje in lv.stanja" ng-model="lv.zaIzmenu.stanje" ng-required="true">
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="opis">Opis</label>
+            <textarea class="form-control border" name="opis" placeholder="Opis..." ng-model="lv.zaIzmenu.opis"></textarea>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" ng-disabled="izmenaArtikla.$invalid" value="Izmeni">
+            <button class="btn btn-danger" type="button" ng-click="lv.odustaniOdIzmene()">Odustani</button>
+        </div>
+    </form>
+</div>
